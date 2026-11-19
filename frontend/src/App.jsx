@@ -11,7 +11,7 @@ export default function App() {
         </div>
       </header>
       <main className="mx-auto max-w-7xl space-y-6 px-4 py-6">
-        <p>Dashboard coming soon…</p>
+        <RegistrationsPage />
       </main>
     </div>
   )
