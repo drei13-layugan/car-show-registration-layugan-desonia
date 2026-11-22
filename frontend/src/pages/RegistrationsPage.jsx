@@ -6,7 +6,7 @@ import RegistrationFilters from '../components/RegistrationFilters'
 import RegistrationTable from '../components/RegistrationTable'
 import Pagination from '../components/Pagination'
 
-// This page owns the state. Child components only receive props and call the handlers.
+
 export default function RegistrationsPage() {
   const [searchText, setSearchText] = useState('')
   const [type, setType] = useState('')
@@ -17,7 +17,7 @@ export default function RegistrationsPage() {
   const [summary, setSummary] = useState(null)
   const [loading, setLoading] = useState(true)
 
-  // wait until the user stops typing (~400 ms) before calling the API
+  
   const debouncedSearch = useDebounce(searchText, 400)
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function RegistrationsPage() {
     }
   }, [debouncedSearch, type, status, page, pageSize])
 
-  // changing any filter goes back to page 1
+  
   const handleSearchChange = (value) => { setSearchText(value); setPage(1) }
   const handleTypeChange = (value) => { setType(value); setPage(1) }
   const handleStatusChange = (value) => { setStatus(value); setPage(1) }
