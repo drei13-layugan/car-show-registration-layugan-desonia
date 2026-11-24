@@ -1,16 +1,47 @@
-# React + Vite
+# Car Show 2027 — Registration Dashboard (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React (Vite) and Tailwind CSS dashboard that shows car show registrations,
+with summary cards, filters and pagination.
 
-Currently, two official plugins are available:
+## How to run
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-## React Compiler
+Open the URL Vite prints (usually http://localhost:5173).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Sample data or the real API
 
-## Expanding the ESLint configuration
+The app can use local sample data or the real C# API. This is controlled in
+`frontend/.env.development`:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+VITE_API_BASE_URL=http://localhost:5205
+VITE_USE_SAMPLE=true
+```
+
+- `VITE_USE_SAMPLE=true` uses the sample data in `src/api/sample-data.js`. No backend needed.
+- `VITE_USE_SAMPLE=false` calls the real API through `src/api/registrationsApi.js`.
+
+After changing this file, stop `npm run dev` and start it again.
+
+To use the real API:
+1. Start the backend: `cd backend`, then `dotnet run --project Api`.
+2. Copy the URL it prints into `VITE_API_BASE_URL`.
+3. Set `VITE_USE_SAMPLE=false` and restart `npm run dev`.
+
+## Folder structure
+
+```
+src/
+├── api/         registrationsApi.js, sample-data.js, index.js (the switch)
+├── hooks/       useDebounce.js
+├── components/  KpiCard(s), RegistrationFilters, RegistrationTable, Pagination, StatusBadge, PaymentBadge
+├── pages/       RegistrationsPage.jsx (holds the state and loads the data)
+├── utils/       format.js (peso and date formatting)
+├── App.jsx
+└── index.css
+```
