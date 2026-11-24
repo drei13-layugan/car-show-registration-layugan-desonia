@@ -1,4 +1,3 @@
-// Local sample data. Same function names and return shapes as registrationsApi.js
 
 const PEOPLE = [
   ['Juan Dela Cruz', 'Toyota Supra MK4'],
